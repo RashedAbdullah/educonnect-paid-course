@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const EnrollmentSchema = new Schema({
+const LiveSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -11,32 +11,37 @@ const EnrollmentSchema = new Schema({
     required: true,
   },
 
-  duration: {
+  thumbnail: {
     type: String,
     required: true,
   },
 
-  video_url: {
+  video_id: {
     type: String,
     required: true,
   },
 
-  published: {
-    type: Boolean,
-    required: true,
-  },
   slug: {
     type: String,
     required: true,
   },
 
-  access: {
+  schedule: {
     type: String,
     required: true,
   },
+
+  quiz_id: {
+    type: String,
+    required: false,
+  },
+
+  instructor_id: {
+    type: String,
+    required: false,
+  },
 });
 
-const enrollmentModel =
-  mongoose.models.Enrollment || mongoose.model("Enrollment", EnrollmentSchema);
+const liveModel = mongoose.models.Live || mongoose.model("Live", LiveSchema);
 
-export { enrollmentModel };
+export { liveModel };
