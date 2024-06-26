@@ -9,7 +9,7 @@ const Test = () => {
   };
 
   return (
-    <Button variant="destructive" onClick={() => handleClick(false)}>
+    <Button variant="outline" onClick={() => handleClick(false)}>
       Test Toast
     </Button>
   );
