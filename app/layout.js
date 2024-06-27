@@ -1,9 +1,8 @@
-import { Inter, Poppins } from "next/font/google";
-import "./globals.css";
+import { Hind_Siliguri, Poppins } from "next/font/google";
+import "@/css/globals.css";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"] });
+const hind = Hind_Siliguri({ subsets: ["bengali"], weight: ["400"] });
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400"],
@@ -18,10 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, poppins.className)}>
-        {children}
-        <Toaster richColors position="bottom-center" />
-      </body>
+      <body className={cn(hind.className, poppins.className)}>{children}</body>
     </html>
   );
 }
