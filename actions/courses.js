@@ -4,6 +4,7 @@ import { courseModel } from "@/models/course-model";
 import { moduleModel } from "@/models/module-model";
 import { testimonialModel } from "@/models/testimonial-model";
 import { userModel } from "@/models/user-model";
+import { replaceMongoIdInArray } from "@/utils/data-utils";
 
 const getCourses = async () => {
   try {
@@ -11,6 +12,15 @@ const getCourses = async () => {
 
     const courses = await courseModel
       .find({})
+      .select([
+        "title",
+        "thumbnail",
+        "modules",
+        "price",
+        "category",
+        "instructor",
+        "testimonials",
+      ])
       .populate({
         path: "category",
         model: categoryModel,
@@ -26,8 +36,9 @@ const getCourses = async () => {
       .populate({
         path: "testimonials",
         model: testimonialModel,
-      });
-    return courses;
+      })
+      .lean();
+    return replaceMongoIdInArray(courses);
   } catch (err) {
     console.log(err.message);
   }

@@ -1,3 +1,5 @@
+import { getcategories } from "@/actions/categories";
+import { getCourses } from "@/actions/courses";
 import { CourseProgress } from "@/components/home-page/course-progress";
 import { SectionTitle } from "@/components/home-page/section-title";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -95,7 +97,10 @@ const courses = [
   },
 ];
 
-const HomePage = () => {
+const HomePage = async () => {
+  const categories = await getcategories();
+  const courses = await getCourses();
+
   return (
     <>
       {" "}
@@ -154,13 +159,13 @@ const HomePage = () => {
           {categories.map((category) => {
             return (
               <Link
-                href=""
+                href={`/categories/${category.id}`}
                 key={category.id}
                 className="relative overflow-hidden rounded-lg border bg-background p-2 hover:scale-105 transition-all duration-500 ease-in-out"
               >
                 <div className="flex  flex-col gap-4 items-center justify-between rounded-md p-6">
                   <Image
-                    src={category.thumbnail}
+                    src={`/assets/images/categories/${category.thumbnail}`}
                     alt={category.title}
                     width={100}
                     height={100}
@@ -184,9 +189,9 @@ const HomePage = () => {
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4">
-          {courses.map((category) => {
+          {courses.map((course) => {
             return (
-              <Link key={category.id} href={`/courses/${category.id}`}>
+              <Link key={course.id} href={`/courses/${course.id}`}>
                 <div className="group hover:shadow-sm transition overflow-hidden border rounded-lg p-3 h-full">
                   <div className="relative w-full aspect-video rounded-md overflow-hidden">
                     <Image
