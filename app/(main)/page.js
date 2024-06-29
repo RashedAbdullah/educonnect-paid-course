@@ -15,7 +15,6 @@ const HomePage = async () => {
 
   return (
     <>
-      {" "}
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32 grainy">
         <div className="container flex max-w-[64rem] flex-col items-center gap-4 text-center relative isolate">
           <div
@@ -61,7 +60,7 @@ const HomePage = async () => {
           <SectionTitle>ক্যাটাগরি</SectionTitle>
 
           <Link
-            href={""}
+            href={"/"}
             className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1"
           >
             সবগুলো ব্রাউজ করুন <ArrowRightIcon className="h-4 w-4" />
@@ -94,7 +93,7 @@ const HomePage = async () => {
         <div className="flex items-center justify-between">
           <SectionTitle>কোর্সসমূহ</SectionTitle>
           <Link
-            href={""}
+            href={"/courses"}
             className=" text-sm font-medium  hover:opacity-80 flex items-center gap-1"
           >
             সবগুলো ব্রাউজ করুন <ArrowRightIcon className="h-4 w-4" />
@@ -131,7 +130,7 @@ const HomePage = async () => {
 
                     <CourseProgress
                       size="sm"
-                      value={80}
+                      value={100}
                       variant={110 === 100 ? "success" : ""}
                     />
 
