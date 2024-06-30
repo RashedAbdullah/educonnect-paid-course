@@ -17,7 +17,7 @@ const TestimonialSchema = new Schema({
   },
   user: {
     type: Schema.ObjectId,
-    required: true,
+    ref: "User",
   },
 });
 

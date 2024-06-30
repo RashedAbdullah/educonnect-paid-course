@@ -1,16 +1,9 @@
 const LoginPage = () => {
   return (
-    <div>
-      <iframe
-        src="https://embedstreams.me/t20/t20-world-cup-final-south-africa-vs-india-stream-4"
-        width="100%"
-        height="100%"
-        scrolling="no"
-        frameborder="0"
-        allowfullscreen
-        allowtransparency
-        referrerpolicy="unsafe-url"
-      ></iframe>
+    <div className="container">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim perferendis
+      quibusdam debitis cum, alias ab saepe ad excepturi aut tenetur? Sequi
+      natus vitae ducimus ea similique dolorem eum culpa. Ullam.
     </div>
   );
 };

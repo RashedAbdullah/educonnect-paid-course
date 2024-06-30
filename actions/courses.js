@@ -4,7 +4,10 @@ import { courseModel } from "@/models/course-model";
 import { moduleModel } from "@/models/module-model";
 import { testimonialModel } from "@/models/testimonial-model";
 import { userModel } from "@/models/user-model";
-import { replaceMongoIdInArray } from "@/utils/data-utils";
+import {
+  replaceMongoIdInArray,
+  replaceMongoIdInObject,
+} from "@/utils/data-utils";
 
 const getCourses = async () => {
   try {
@@ -44,4 +47,37 @@ const getCourses = async () => {
   }
 };
 
-export { getCourses };
+const getCourseDetails = async (id) => {
+  try {
+    await database_connection();
+
+    const course = await courseModel
+      .findById(id)
+      .populate({
+        path: "category",
+        model: categoryModel,
+      })
+      .populate({
+        path: "instructor",
+        model: userModel,
+      })
+      .populate({
+        path: "modules",
+        model: moduleModel,
+      })
+      .populate({
+        path: "testimonials",
+        model: testimonialModel,
+        populate: {
+          path: "user",
+          model: userModel,
+        },
+      })
+      .lean();
+    return replaceMongoIdInObject(course);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export { getCourses, getCourseDetails };
