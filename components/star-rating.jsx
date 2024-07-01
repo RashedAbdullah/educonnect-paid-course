@@ -7,7 +7,7 @@ const StarRating = ({ rating }) => {
         <svg
           key={ind}
           className="w-6 h-6 text-yellow-600"
-          fill="#000"
+          fill="rgb(202 138 4)"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
         >

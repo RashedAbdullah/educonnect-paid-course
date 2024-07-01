@@ -22,16 +22,17 @@ import {
   Video,
 } from "lucide-react";
 import Image from "next/image";
+import CourseOverview from "./course-overview";
 
-const CourseDetails = ({ testimonials }) => {
+const CourseDetails = ({ course }) => {
   return (
     <section className="py-8 md:py-12 lg:py-24">
       <div className="container">
-        <span className="bg-success px-4 py-0.5 rounded-full text-xs font-medium text-white inline-block">
-          Development
+        <span className="bg-success px-4 py-0.5 rounded-full text-xs font-medium text-white inline-block bg-green-500">
+          {course.category.title}
         </span>
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold 2xl:text-5xl mt-3">
-          Reactive Accelerator
+          {course.title}
         </h3>
         <p className="mt-3 text-gray-600 text-sm">Master React JS & Next JS</p>
         {/*  */}
@@ -39,12 +40,14 @@ const CourseDetails = ({ testimonials }) => {
           <div className="flex items-center gap-2">
             <Image
               className="w-[40px] h-[40px] rounded-full"
-              src="https://avatars.githubusercontent.com/u/136439745?v=4"
-              alt="sumit saha"
+              src={course.instructor.profilePicture}
+              alt={course.instructor.firstName}
               width={768}
               height={463}
             />
-            <p className="font-bold">Rashed Abdullah</p>
+            <p className="font-bold">
+              {course.instructor.firstName} {course.instructor.lastName}
+            </p>
           </div>
           <div className="flex items-center gap-2 text-sm">
             <span className="text-success font-semibold">Last Updated: </span>
@@ -56,70 +59,13 @@ const CourseDetails = ({ testimonials }) => {
         <div className="my-6">
           <Tabs defaultValue="overview" className="w-full">
             <TabsList className="grid w-full grid-cols-3 my-6 max-w-[768px]">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="curriculum">Carriculum</TabsTrigger>
-              <TabsTrigger value="instructor">Instructor</TabsTrigger>
+              <TabsTrigger value="overview">কোর্স অভারভিউ</TabsTrigger>
+              <TabsTrigger value="curriculum">কারিকুলাম</TabsTrigger>
+              <TabsTrigger value="instructor">প্রশিক্ষক</TabsTrigger>
               {/* <TabsTrigger value="reviews">Reviews</TabsTrigger> */}
             </TabsList>
             <TabsContent value="overview">
-              {/* each tab content can be independent component */}
-              <>
-                <h3 className=" text-2xl">Course Description</h3>
-                <p className="mt-4">
-                  This tutorial will help you learn quickly and thoroughly.
-                  Lorem ipsum, or lipsum as it sometimes known, is dummy text
-                  used in laying out print, graphic or web designs. Lorem ipsum
-                  dolor sit amet, consectetuer adipiscing elit. Donec odio.
-                  Quisque volutpat mattis eros.
-                  <br /> <br /> You’ll be exposed to principles and strategies,
-                  but, more importantly, you’ll learn how actually apply these
-                  abstract concepts by coding three different websites for three
-                  very different the audiences. Lorem ipsum is dummy text used
-                  in laying out print, graphic or web designs Lorem ipsum
-                  blinding shot chinwag knees.
-                </p>
-                <div className="bg-gray-50 space-y-6 p-8 rounded-md mt-8">
-                  <h4 className="text-2xl">What You will Learn?</h4>
-                  <ul className="grid sm:grid-cols-2 grid-cols-1 gap-6">
-                    <li className="flex space-x-3">
-                      <div className="flex-none relative top-1">
-                        <CheckCheck />
-                      </div>
-                      <div className="flex-1">
-                        Learn how perspective works and how to incorporate your
-                        art
-                      </div>
-                    </li>
-                    <li className="flex space-x-3">
-                      <div className="flex-none relative top-1">
-                        <CheckCheck />
-                      </div>
-                      <div className="flex-1">
-                        Learn how perspective works and how to incorporate your
-                        art
-                      </div>
-                    </li>
-                    <li className="flex space-x-3">
-                      <div className="flex-none relative top-1">
-                        <CheckCheck />
-                      </div>
-                      <div className="flex-1">
-                        Learn how perspective works and how to incorporate your
-                        art
-                      </div>
-                    </li>
-                    <li className="flex space-x-3">
-                      <div className="flex-none relative top-1">
-                        <CheckCheck />
-                      </div>
-                      <div className="flex-1">
-                        Learn how perspective works and how to incorporate your
-                        art
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </>
+              <CourseOverview overview={course} />
             </TabsContent>
             <TabsContent value="curriculum">
               {/* each tab content can be independent component */}

@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
+// subtile and learning will be added in the course model and database
 const CourseSchema = new Schema({
   title: {
     type: String,

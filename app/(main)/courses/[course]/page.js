@@ -9,7 +9,7 @@ const SingleCoursePage = async ({ params: { course: id } }) => {
   return (
     <>
       <CourseDetailsIntro title={course.title} thumbnail={course.thumbnail} />
-      <CourseDetails />
+      <CourseDetails course={course} />
       {course?.testimonials && (
         <Testimonials testimonials={course?.testimonials} />
       )}
