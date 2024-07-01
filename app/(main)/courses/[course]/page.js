@@ -6,7 +6,6 @@ import { getCourseDetails } from "@/actions/courses";
 
 const SingleCoursePage = async ({ params: { course: id } }) => {
   const course = await getCourseDetails(id);
-  console.log(course?.testimonials);
   return (
     <>
       <CourseDetailsIntro title={course.title} thumbnail={course.thumbnail} />
