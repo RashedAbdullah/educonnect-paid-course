@@ -1,36 +1,32 @@
 import mongoose, { Schema } from "mongoose";
 
 const EnrollmentSchema = new Schema({
-  title: {
+  user_id: {
+    type: String,
+    ref: "User",
+  },
+
+  course_id: {
+    type: String,
+    ref: "Course",
+  },
+
+  enrollment_date: {
     type: String,
     required: true,
   },
 
-  description: {
+  status: {
     type: String,
     required: true,
   },
 
-  duration: {
-    type: String,
-    required: true,
-  },
-
-  video_url: {
-    type: String,
-    required: true,
-  },
-
-  published: {
+  completion_dat: {
     type: Boolean,
     required: true,
   },
-  slug: {
-    type: String,
-    required: true,
-  },
 
-  access: {
+  method: {
     type: String,
     required: true,
   },

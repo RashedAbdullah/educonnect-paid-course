@@ -5,10 +5,11 @@ const CourseOverview = ({ overview }) => {
     <>
       <h3 className=" text-2xl">কোর্স ডেস্ক্রিপশন</h3>
       <p className="mt-4">{overview.description}</p>
-      <div className="bg-gray-50 space-y-6 p-8 rounded-md mt-8">
-        <h4 className="text-2xl">তুমি কি কি শিখতে পারবে ?</h4>
-        {/* overview.learing (insert array in database) */}
-        {overview?.learing && (
+      {overview?.learing && (
+        <div className="bg-gray-50 space-y-6 p-8 rounded-md mt-8">
+          <h4 className="text-2xl">তুমি কি কি শিখতে পারবে ?</h4>
+          {/* overview.learing (insert array in database) */}
+
           <ul className="grid sm:grid-cols-2 grid-cols-1 gap-6">
             {overview?.learing?.map((learning) => (
               <li key={learning} className="flex space-x-3">
@@ -19,8 +20,8 @@ const CourseOverview = ({ overview }) => {
               </li>
             ))}
           </ul>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

@@ -8,6 +8,8 @@ import {
   replaceMongoIdInArray,
   replaceMongoIdInObject,
 } from "@/utils/data-utils";
+import { getEnrollments } from "./enrollment";
+import { getTestimonilas } from "./testimonials";
 
 const getCourses = async () => {
   try {
@@ -80,4 +82,37 @@ const getCourseDetails = async (id) => {
   }
 };
 
-export { getCourses, getCourseDetails };
+const getCourseDetailsByInstructor = async (instructorId) => {
+  try {
+    await database_connection();
+
+    const courses = await courseModel.find({ instructor: instructorId }).lean();
+
+    const enrollments = await Promise.all(
+      courses.map(async (course) => {
+        const enrollment = await getEnrollments(course._id.toString());
+        return enrollment;
+      })
+    );
+
+    const totalTestimonials = await Promise.all(
+      courses.map(async (course) => {
+        const testimonial = await getTestimonilas(course._id.toString());
+        return testimonial;
+      })
+    );
+
+    const totlalEnrollments = enrollments.reduce(
+      (item, crr) => item.length + crr.length
+    );
+    console.log(totalTestimonials);
+    return {
+      courses: courses.length,
+      enrollments: totlalEnrollments,
+    };
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+export { getCourses, getCourseDetails, getCourseDetailsByInstructor };
