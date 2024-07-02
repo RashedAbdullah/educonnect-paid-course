@@ -43,24 +43,17 @@ const CourseInstructor = async ({ course }) => {
               </li>
               <li className="flex space-x-3">
                 <MessageSquare className="text-gray-600" />
-                <div>1500+ Reviews</div>
+                <div>1500+ রিভিউ</div>
               </li>
               <li className="flex space-x-3">
                 <Star className="text-gray-600" />
-                <div>4.9 Average Rating</div>
+                <div>{courseByInstructor.avgRating} এভারেজ রেটিং</div>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <p className="text-gray-600">
-        There are many variations of passages of Lorem Ipsum available, but the
-        majority have suffered alteration in some form, by injected humour, or
-        randomised words which do not look even slightly believable. If you are
-        going to use a passage of Lorem Ipsum, you need to be sure there is not
-        anything embarrassing hidden in the middle of text. All the Lorem Ipsum
-        generators on the Internet tend.
-      </p>
+      <p className="text-gray-600">{instructor.bio}</p>
     </div>
   );
 };

@@ -95,20 +95,27 @@ const getCourseDetailsByInstructor = async (instructorId) => {
       })
     );
 
-    const totalTestimonials = await Promise.all(
+    const testimonials = await Promise.all(
       courses.map(async (course) => {
         const testimonial = await getTestimonilas(course._id.toString());
         return testimonial;
       })
     );
 
+    const totalTestimonials = testimonials.flat();
+    const avgRating =
+      totalTestimonials.reduce((acc, obj) => acc + obj.rating, 0) /
+      totalTestimonials.length;
+
     const totlalEnrollments = enrollments.reduce(
       (item, crr) => item.length + crr.length
     );
-    console.log(totalTestimonials);
+    console.log(avgRating);
     return {
       courses: courses.length,
       enrollments: totlalEnrollments,
+      reviews: totalTestimonials.length,
+      avgRating: avgRating === NaN ? 0 : avgRating.toPrecision(2),
     };
   } catch (err) {
     console.log(err.message);
