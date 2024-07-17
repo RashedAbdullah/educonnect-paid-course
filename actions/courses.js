@@ -110,7 +110,7 @@ const getCourseDetailsByInstructor = async (instructorId) => {
     const totlalEnrollments = enrollments.reduce(
       (item, crr) => item.length + crr.length
     );
-    console.log(avgRating);
+  
     return {
       courses: courses.length,
       enrollments: totlalEnrollments,
